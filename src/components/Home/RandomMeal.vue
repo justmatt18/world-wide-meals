@@ -1,0 +1,66 @@
+<template>
+  <b-container>
+    <div class="random-meal pb-3">
+      <h3 class="bordered-bottom pb-4">More to <span class="text-light-green">Explore</span></h3>
+    </div>
+    <b-row align-h="center">
+      <b-col class="p-4 col-meals" sm="4" v-for="meal in meals" :key="meal.idMeal">
+        <img fluid :src="meal.strMealThumb" alt="Random Meal Image">
+        <p class="pt-2">{{ meal.strMeal }}</p>
+      </b-col>
+    </b-row>
+  </b-container>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      api: 'https://www.themealdb.com/api/json/v1/1/random.php',
+      meals: []
+    }
+  },
+  mounted () {
+    this.getRandonMeals()
+  },
+  methods: {
+    async getRandonMeals () {
+      try {
+        let mealCount = this.meals.length
+        while (mealCount !== 9) {
+          let res = await fetch(this.api)
+          let data = await res.json()
+          let isExist = !!this.meals.find(meal => JSON.stringify(meal) === JSON.stringify(data.meals[0]))
+          if (!isExist) {
+            this.meals.push(data.meals[0])
+            mealCount = this.meals.length
+          }
+        }
+        this.count = this.meals.length
+      } catch (err) {
+        console.log(`Error from random meals API: ${err}`)
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+.bordered-bottom {
+  border-bottom: 5px solid;
+  border-bottom-color: #3f51b5;
+}
+.text-light-green {
+  color: #8bc34a;
+}
+.col-meals p {
+  font-size: 18px;
+}
+.col-meals img {
+  height: 220px;
+  widows: 100%;
+  vertical-align: middle;
+  border: 0;
+  cursor: pointer;
+}
+</style>
