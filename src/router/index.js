@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Category from '@/views/Category'
 import About from '@/views/About'
+import Meal from '@/views/Meal'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/about',
     name: 'about',
     component: About
+  },
+  {
+    path: '/meals/:name',
+    name: 'meal',
+    component: Meal
   }
 ]
 
