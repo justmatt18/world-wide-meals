@@ -42,7 +42,7 @@
     font-size: 38px;
     color: #42b983;
     .brand-logo {
-      height: 13vh;
+      height: 10vh;
       width: auto;
     }
   }
