@@ -1,6 +1,12 @@
 # food-wars
 
-## Project setup
+### Technologies
+* Vue JS
+* MealDB API
+* Vue Bootstrap
+
+
+### Project setup
 ```
 yarn install
 ```
