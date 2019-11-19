@@ -1,21 +1,45 @@
 <template>
   <div class="meal-view">
-    <div class="warning" v-if="apiError">
+    <div class="warning text-center" v-if="apiError">
       <p>Error in meal API</p>
     </div>
-    <h1>Meal Name: {{ $route.params.name }}</h1>
+    
+    <b-container>
+      <b-row align-h="center" class="py-5">
+        <b-col sm="4" class="image-col">
+          <p class="meal-name">{{ meal.strMeal }}</p>
+          <img fluid :src="meal.strMealThumb" alt="Meal Image">
+        </b-col>
+        <b-col sm="8">
+          <b-row align-h="center">
+            <b-col sm="3">
+            </b-col>
+          </b-row>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'meal',
   data () {
     return {
       // get api by name
       mealApi: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
-      // api: 'https://www.themealdb.com/api/json/v1/1/search.php?s=' + this.$router.params.name,
       apiError: false,
-      meal: {}
+      meal: {},
+      ingredients: [],
+      ingredient: {
+        name: '',
+        measure: ''
+      }
+    }
+  },
+  computed: {
+    getApi () {
+      return this.mealApi + this.$route.params.name
     }
   },
   mounted () {
@@ -27,7 +51,6 @@ export default {
         const api = this.mealApi + this.$route.params.name
         let res = await fetch(api)
         let data = await res.json()
-        console.log(data.meals[0])
         this.meal = data.meals[0]
       } catch (err) {
         this.apiError = true
@@ -37,3 +60,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.image-col {
+  p {
+    font-size: 25px;
+  }
+  img {
+    width: 95%;
+  }
+}
+</style>
