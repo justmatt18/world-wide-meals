@@ -21,7 +21,7 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Roboto+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
