@@ -60,7 +60,7 @@ export default {
 }
 .col-meals img {
   height: 220px;
-  widows: 100%;
+  width: auto;
   vertical-align: middle;
   border: 0;
   cursor: pointer;
