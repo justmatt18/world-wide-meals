@@ -2,13 +2,13 @@
   <div class="home">
     <div class="header-section mb-5">
       <b-container fluid>
-        <b-row class="banner-section py-5" align-v="center" align-h="center">
+        <b-row class="banner-section py-5" align-h="center" align-v="center">
           <b-col sm="4">
-            <p class="banner-title">Food Matters</p>
+            <p class="banner-title pt-5">Food Matters</p>
             <p class="banner-content">"There is no love sincerer than the love of food."</p>
           </b-col>
-          <b-col sm="8" class="pl-5 d-sm-none d-md-block">
-            <img class="meal-banner" fluid src="../assets/meal.png" alt="Meal Banner">
+          <b-col sm="8" class="d-sm-none d-md-block">
+            <img class="meal-banner pl-sm-2 mt-5" fluid src="../assets/meal.png" alt="Meal Banner">
           </b-col>
         </b-row>
       </b-container>
@@ -41,7 +41,7 @@ export default {
 .header-section {
   line-height: 1.6;
   color: #f8f8f8;
-  height: 75vh;
+  height: 90vh;
   font-family: 'Nanum Gothic', sans-serif;
   background-color: #8bc34a;
 }

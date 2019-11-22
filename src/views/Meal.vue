@@ -3,20 +3,26 @@
     <div class="warning text-center" v-if="apiError">
       <p>Error in meal API</p>
     </div>
-    
     <b-container>
       <b-row align-h="center" class="py-5">
         <b-col sm="4" class="image-col">
-          <p class="meal-name">{{ meal.strMeal }}</p>
-          <img fluid :src="meal.strMealThumb" alt="Meal Image">
+          <p class="meal-name pb-3">{{ meal.strMeal }}</p>
+          <img class="mb-5" fluid :src="meal.strMealThumb" alt="Meal Image">
         </b-col>
         <b-col sm="8">
-          <b-row align-h="center">
-            <b-col sm="3">
+          <p class="text-ingredients">Ingredients</p>
+          <b-row>
+            <b-col class="ingredients" sm="3" v-for="ingredient in ingredients" :key="ingredient.id">
+              <img class="ingredient-img py-3" :src="ingredient.image">
+              <p>{{ ingredient.measure }} {{ ingredient.name }}</p>
             </b-col>
           </b-row>
         </b-col>
       </b-row>
+      <div class="instructions-section text-center">
+        <p class="instruction-heading">Instructions</p>
+        <pre>{{ meal.strInstructions }}</pre>
+      </div>
     </b-container>
   </div>
 </template>
@@ -26,20 +32,18 @@ export default {
   name: 'meal',
   data () {
     return {
-      // get api by name
-      mealApi: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
+      api: {
+        ingredientImage: 'https://www.themealdb.com/images/ingredients/',
+        meal: 'https://www.themealdb.com/api/json/v1/1/search.php?s='
+      },
       apiError: false,
       meal: {},
-      ingredients: [],
-      ingredient: {
-        name: '',
-        measure: ''
-      }
+      ingredients: []
     }
   },
   computed: {
     getApi () {
-      return this.mealApi + this.$route.params.name
+      return this.meal + this.$route.params.name
     }
   },
   mounted () {
@@ -48,10 +52,22 @@ export default {
   methods: {
     async getMeal () {
       try {
-        const api = this.mealApi + this.$route.params.name
+        const api = this.api.meal + this.$route.params.name
         let res = await fetch(api)
         let data = await res.json()
         this.meal = data.meals[0]
+        for (let index = 0; index < 20; index++) {
+          let num = index + 1
+          let ingredientName = this.meal[`strIngredient${num}`]
+          let amount = this.meal[`strMeasure${num}`]
+          if (ingredientName) {
+            let img = this.api.ingredientImage + ingredientName + '.png'
+            const item = { id: num, name: ingredientName, measure: amount, image: img }
+            this.ingredients.push(item)
+          } else {
+            break
+          }
+        }
       } catch (err) {
         this.apiError = true
         console.log(`Error in meal api: ${err}`)
@@ -63,11 +79,18 @@ export default {
 
 <style lang="scss">
 .image-col {
-  p {
-    font-size: 25px;
-  }
   img {
-    width: 95%;
+    width: 100%;
   }
+}
+.meal-name, .text-ingredients, .instruction-heading {
+  font-size: 25px;
+}
+.ingredient-img {
+  height: 170px;
+  width: auto;
+}
+.pre-formatted {
+  white-space: pre-line;
 }
 </style>
