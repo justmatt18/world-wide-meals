@@ -79,7 +79,7 @@
         <!-- Content -->
         <h6 class="text-uppercase font-weight-bold">World Wide Meals</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>The website offers a simple but elegant way of showing different meals around the world. It consist of 24 Countries such as Candian, Japanese, Indian, Italian and many more.</p>
+        <p>The website offers a simple but elegant way of showing different meals around the world. It consist of 24 countries cusine such as Canadian, Japanese, Indian, Italian and many more.</p>
 
       </div>
       <!-- Grid column -->
@@ -238,5 +238,4 @@
     text-decoration: none;
   }
 }
-
 </style>
