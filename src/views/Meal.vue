@@ -19,15 +19,20 @@
           </b-row>
         </b-col>
       </b-row>
+      <div class="youtube-embed-section text-center">
+        <h6>You can also watch it the demo <strong>here</strong> on how to make this {{ meal.strMeal }}</h6>
+        <youtube :video-id="getSrc" player-width="100%" player-height="550" :player-vars="{autoplay: 0}"></youtube>
+      </div>
       <div class="instructions-section text-center">
-        <p class="instruction-heading">Instructions</p>
-        <pre>{{ meal.strInstructions }}</pre>
+        <p class="instruction-heading pt-5">Instructions</p>
+        <p class="text-justify"><span v-html="meal.strInstructions"></span></p>
       </div>
     </b-container>
   </div>
 </template>
 
 <script>
+import { getIdFromURL } from 'vue-youtube-embed'
 export default {
   name: 'meal',
   data () {
@@ -44,6 +49,9 @@ export default {
   computed: {
     getApi () {
       return this.meal + this.$route.params.name
+    },
+    getSrc () {
+      return getIdFromURL(this.meal.strYoutube)
     }
   },
   mounted () {
@@ -64,8 +72,6 @@ export default {
             let img = this.api.ingredientImage + ingredientName + '.png'
             const item = { id: num, name: ingredientName, measure: amount, image: img }
             this.ingredients.push(item)
-          } else {
-            break
           }
         }
       } catch (err) {
@@ -81,14 +87,15 @@ export default {
 .image-col {
   img {
     width: 100%;
+    height: auto;
   }
 }
 .meal-name, .text-ingredients, .instruction-heading {
   font-size: 25px;
 }
 .ingredient-img {
-  height: 170px;
-  width: auto;
+  height: 150px;
+  width: 100%;
 }
 .pre-formatted {
   white-space: pre-line;
