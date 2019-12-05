@@ -5,6 +5,12 @@
 * MealDB API
 * Vue Bootstrap
 
+### Packages
+* vue-youtube-embed
+
+
+
+
 
 ### Project setup
 ```
