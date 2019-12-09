@@ -8,7 +8,13 @@
 ### Packages
 * vue-youtube-embed
 
-
+.border[data-v-198e3886] {
+    width: 55px;
+    height: 8px;
+    background: #ff6583;
+    border-radius: 20px;
+    margin-top: 8px;
+}
 
 
 

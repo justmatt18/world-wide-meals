@@ -1,5 +1,15 @@
 <template>
   <div class="category">
+    <div class="category-banner mb-md-5 mb-sm-0">
+      <b-container>
+        <b-row class="section-content" align-self="center" align-v="center">
+          <b-col class="content py-5">
+            <h1><span>Categories</span></h1>
+            <h1 class="text-uppercase text-light">Meals Around the World</h1>
+          </b-col>
+        </b-row>
+      </b-container>
+    </div>
     <Search />
     <b-container><div class="separator"></div></b-container>
     <h2 class="pt-5 pt-sm-0">Meal <span class="meal-text">Categories</span></h2>
@@ -42,3 +52,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.category-banner {
+  height: 90vh;
+  background: linear-gradient(to right bottom, rgba(255, 185, 0, .8),
+  rgba(255, 119, 48, .8)),
+  url("../assets/Category/category-bg.jpeg") center / cover no-repeat;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+</style>

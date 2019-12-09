@@ -4,9 +4,11 @@
       <h3 class="bordered-bottom pb-4">Random <span class="text-light-green">Meals</span></h3>
     </div>
     <b-row align-h="center">
-      <b-col class="p-4 col-meals" sm="3" v-for="meal in meals" :key="meal.idMeal">
+      <b-col class="p-4 col-meals" sm="3" md="6" lg="4" xl="3" v-for="meal in meals" :key="meal.idMeal">
         <router-link :to="`/meals/${meal.strMeal}`">
-          <img fluid :src="meal.strMealThumb" alt="Random Meal Image">
+          <img
+            fluid :src="meal.strMealThumb"
+            alt="Random Meal Image">
         </router-link>
         <p class="pt-2">{{ meal.strMeal }}</p>
       </b-col>

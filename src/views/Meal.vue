@@ -94,8 +94,8 @@ export default {
   font-size: 25px;
 }
 .ingredient-img {
-  height: 150px;
-  width: 100%;
+  height: 170px;
+  width: auto;
 }
 .pre-formatted {
   white-space: pre-line;
