@@ -20,7 +20,6 @@
         </b-col>
       </b-row>
       <div class="youtube-embed-section text-center">
-        <h6>You can also watch it the demo <strong>here</strong> on how to make this {{ meal.strMeal }}</h6>
         <youtube :video-id="getSrc" player-width="100%" player-height="550" :player-vars="{autoplay: 0}"></youtube>
       </div>
       <div class="instructions-section text-center">
