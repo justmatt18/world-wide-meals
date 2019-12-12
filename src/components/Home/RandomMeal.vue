@@ -6,13 +6,14 @@
     <b-row align-h="center">
       <b-col class="p-4 col-meals" sm="3" md="6" lg="4" xl="3" v-for="meal in meals" :key="meal.idMeal">
         <router-link :to="`/meals/${meal.strMeal}`">
-          <img
+          <b-img
             fluid :src="meal.strMealThumb"
-            alt="Random Meal Image">
+            alt="Random Meal Image"></b-img>
         </router-link>
         <p class="pt-2">{{ meal.strMeal }}</p>
       </b-col>
     </b-row>
+    <div class="bordered-bottom"></div>
   </b-container>
 </template>
 
