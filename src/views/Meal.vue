@@ -7,20 +7,30 @@
       <b-row align-h="center" class="py-5">
         <b-col sm="4" class="image-col">
           <p class="meal-name pb-3">{{ meal.strMeal }}</p>
-          <img class="mb-5" fluid :src="meal.strMealThumb" alt="Meal Image">
+          <img class="mb-5" fluid :src="meal.strMealThumb" alt="Meal Image" />
         </b-col>
         <b-col sm="8">
           <p class="text-ingredients">Ingredients</p>
           <b-row>
-            <b-col class="ingredients" sm="3" v-for="ingredient in ingredients" :key="ingredient.id">
-              <img class="ingredient-img py-3" :src="ingredient.image">
+            <b-col
+              class="ingredients"
+              sm="3"
+              v-for="ingredient in ingredients"
+              :key="ingredient.id"
+            >
+              <img class="ingredient-img py-3" :src="ingredient.image" />
               <p>{{ ingredient.measure }} {{ ingredient.name }}</p>
             </b-col>
           </b-row>
         </b-col>
       </b-row>
       <div class="youtube-embed-section text-center">
-        <youtube :video-id="getSrc" player-width="100%" player-height="550" :player-vars="{autoplay: 0}"></youtube>
+        <youtube
+          :video-id="getSrc"
+          player-width="100%"
+          player-height="550"
+          :player-vars="{ autoplay: 0 }"
+        ></youtube>
       </div>
       <div class="instructions-section text-center">
         <p class="instruction-heading pt-5">Instructions</p>
@@ -69,13 +79,17 @@ export default {
           let amount = this.meal[`strMeasure${num}`]
           if (ingredientName) {
             let img = this.api.ingredientImage + ingredientName + '.png'
-            const item = { id: num, name: ingredientName, measure: amount, image: img }
+            const item = {
+              id: num,
+              name: ingredientName,
+              measure: amount,
+              image: img
+            }
             this.ingredients.push(item)
           }
         }
       } catch (err) {
         this.apiError = true
-        console.log(`Error in meal api: ${err}`)
       }
     }
   }
@@ -89,7 +103,9 @@ export default {
     height: auto;
   }
 }
-.meal-name, .text-ingredients, .instruction-heading {
+.meal-name,
+.text-ingredients,
+.instruction-heading {
   font-size: 25px;
 }
 .ingredient-img {

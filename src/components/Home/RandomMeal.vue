@@ -43,7 +43,6 @@ export default {
           }
         }
       } catch (err) {
-        console.log(`Error from random meals API: ${err}`)
       }
     }
   }

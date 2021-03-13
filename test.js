@@ -1,0 +1,1 @@
+test config () => {return a + b}

@@ -59,7 +59,6 @@ export default {
         let data = await res.json()
         this.areaList = data.meals
       } catch (err) {
-        console.log(`Error from area API: ${err}`)
       }
     },
     async ingredientsApi () {
@@ -68,7 +67,6 @@ export default {
         let data = await res.json()
         this.ingredientsList = data.meals
       } catch (err) {
-        console.log(`Error from ingredients API: ${err}`)
       }
     },
     async categoryApi () {
@@ -77,7 +75,6 @@ export default {
         let data = await res.json()
         this.categoryList = data.meals
       } catch (err) {
-        console.log(`Error from category API: ${err}`)
       }
     }
   }

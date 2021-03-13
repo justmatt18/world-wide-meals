@@ -79,7 +79,6 @@ export default {
         let data = await res.json()
         this.categories = data.meals
       } catch (err) {
-        console.log(`Error from category API: ${err}`)
       }
     }
   }
